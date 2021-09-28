@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace RouteComputationService.Controllers
         {
             float mqtt = calculMQTT().Result;
             float googleData = getGoogleMaps().Result;
+            Item item = LoadJson();
             string json = JsonConvert.SerializeObject(new
             {
                 results = new List<Data>()
@@ -33,6 +35,7 @@ namespace RouteComputationService.Controllers
         new Data { id = "GoogleMaps", tempsItineraire = googleData, timeStamp = DateTime.Now }
     }
             });
+            json = JsonConvert.SerializeObject(item);
             return json;
         }
 
@@ -67,6 +70,16 @@ namespace RouteComputationService.Controllers
                 distanceMQTT += p.Id;
             }
             return distanceMQTT;
+        }
+            public Item LoadJson()
+        {
+            Item item = null;
+            using (StreamReader r = new StreamReader("mock.json"))
+            {
+                string json = r.ReadToEnd();
+                 item = JsonConvert.DeserializeObject<Item>(json);
+            }
+            return item;
         }
 
         // GET api/<ValuesController>/5
