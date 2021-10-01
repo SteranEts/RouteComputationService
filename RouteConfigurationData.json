@@ -1,0 +1,16 @@
+[
+    {
+        "detector": "det-00856-01",
+        "east_lane": [ 1, 2, 3, 4 ],
+        "west_lane": [ 5, 6, 7 ],
+        "coordX": 45.1928,
+        "coordY": -75.454
+    },
+    {
+        "detector": "det-00856-02",
+        "east_lane": [ 1, 2, 3, 4 ],
+        "west_lane": [ 5, 6, 7 ],
+        "coordX": 45.1928,
+        "coordY": -75.454
+    }
+]

@@ -7,8 +7,10 @@ namespace RouteComputationService
 {
     public class Data
     {
-        public string id { get; set; }
-        public float tempsItineraire { get; set; }
-        public DateTime timeStamp { get; set; }
+        public float mqtt_time { get; set; }
+        public DateTime mqtt_time_of_update { get; set; }
+        public float external_time { get; set; }
+        public DateTime external_time_of_update { get; set; }
+        
     }
 }

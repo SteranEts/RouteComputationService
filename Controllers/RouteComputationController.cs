@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RouteComputationService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/routecomputation")]
     [ApiController]
     public class RouteComputationController : ControllerBase
     {
@@ -26,16 +26,8 @@ namespace RouteComputationService.Controllers
         {
             float mqtt = calculMQTT().Result;
             float googleData = getGoogleMaps().Result;
-            Item item = LoadJson();
-            string json = JsonConvert.SerializeObject(new
-            {
-                results = new List<Data>()
-    {
-        new Data { id = "MQTT", tempsItineraire = mqtt, timeStamp = DateTime.Now },
-        new Data { id = "GoogleMaps", tempsItineraire = googleData, timeStamp = DateTime.Now }
-    }
-            });
-            json = JsonConvert.SerializeObject(item);
+            //List<dataIntersection> item = LoadIntersectionsComputation();
+            string json = JsonConvert.SerializeObject(new Data { mqtt_time = mqtt, mqtt_time_of_update = DateTime.Now, external_time = googleData, external_time_of_update = DateTime.Now });
             return json;
         }
 
@@ -81,12 +73,35 @@ namespace RouteComputationService.Controllers
             }
             return item;
         }
+        public List<dataIntersection> LoadIntersectionsComputation()
+        {
+            List<dataIntersection> item = null;
+            using (StreamReader r = new StreamReader("mockIntersectionsComputation.json"))
+            {
+                string json = r.ReadToEnd();
+                item = JsonConvert.DeserializeObject<List<dataIntersection>>(json);
+            }
+            return item;
+        }
+        public List<RouteConfigurationData> LoadRouteConfigurationData()
+        {
+            List<RouteConfigurationData> item = null;
+            using (StreamReader r = new StreamReader("RouteConfigurationData.json"))
+            {
+                string json = r.ReadToEnd();
+                item = JsonConvert.DeserializeObject<List<RouteConfigurationData>>(json);
+            }
+            return item;
+        }
 
         // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [Route("data")]
+        [HttpGet]
+        public string GetData()
         {
-            return "value";
+            List<RouteConfigurationData> item = LoadRouteConfigurationData();
+            string json = JsonConvert.SerializeObject(item);
+            return json;
         }
 
         // POST api/<ValuesController>

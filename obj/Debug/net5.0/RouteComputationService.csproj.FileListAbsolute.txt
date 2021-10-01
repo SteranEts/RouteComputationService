@@ -31,3 +31,5 @@ C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug
 C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug\net5.0\mock.json
+C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug\net5.0\mockIntersectionsComputation.json
+C:\Users\steve\Desktop\AUTOMNE2021\LOG430\Lab1\RouteComputationService\bin\Debug\net5.0\RouteConfigurationData.json

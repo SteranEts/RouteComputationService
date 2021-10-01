@@ -30,6 +30,7 @@ namespace RouteComputationService.Controllers
             var response = await httpClient.GetAsync(URL);
             var test = await response.Content.ReadAsStringAsync();
             var json = JsonConvert.DeserializeObject<Product>(test);
+
             return test;
         }
     }

@@ -1,0 +1,26 @@
+[
+    {
+        "detector1": "detA",
+        "detector2": "detB",
+        "time_west": 10,
+        "time_east": 19
+    },
+    {
+        "detector1": "detB",
+        "detector2": "detC",
+        "time_west": 20,
+        "time_east": 29
+    },
+    {
+        "detector1": "detC",
+        "detector2": "detD",
+        "time_west": 30,
+        "time_east": 39
+    },
+    {
+        "detector1": "detD",
+        "detector2": "detF",
+        "time_west": 40,
+        "time_east": 49
+    }
+]
