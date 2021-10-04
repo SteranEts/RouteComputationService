@@ -6,6 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Net.NetworkInformation;
+using System.Net;
+using System.Net.Sockets;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -63,13 +66,13 @@ namespace RouteComputationService.Controllers
             }
             return distanceMQTT;
         }
-            public Item LoadJson()
+        public Item LoadJson()
         {
             Item item = null;
             using (StreamReader r = new StreamReader("mock.json"))
             {
                 string json = r.ReadToEnd();
-                 item = JsonConvert.DeserializeObject<Item>(json);
+                item = JsonConvert.DeserializeObject<Item>(json);
             }
             return item;
         }
@@ -101,13 +104,56 @@ namespace RouteComputationService.Controllers
         {
             List<RouteConfigurationData> item = LoadRouteConfigurationData();
             string json = JsonConvert.SerializeObject(item);
+            Console.WriteLine("data");
+
             return json;
         }
 
         // POST api/<ValuesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("ping")]
+        [HttpGet]
+        public string ping()
         {
+            //string nameOrAddress = "equipe08-routecomputation.herokuapp.com";
+            //bool pingable = false;
+            //Ping pinger = null;
+            //Console.WriteLine(nameOrAddress + " ping");
+            //try
+            //{
+            //    pinger = new Ping();
+            //    PingReply reply = pinger.Send(nameOrAddress, 1000);
+            //    pingable = reply.Status == IPStatus.Success;
+            //}
+            //catch (PingException)
+            //{
+            //    // Discard PingExceptions and return false;
+            //}
+            //finally
+            //{
+            //    if (pinger != null)
+            //    {
+            //        pinger.Dispose();
+            //    }
+            //}
+
+            //return JsonConvert.SerializeObject(pingable.ToString());
+            System.Net.Sockets.TcpClient client = new TcpClient();
+            bool pingable = false;
+            try
+            {
+                client.Connect("google.com", 456);
+                Console.WriteLine("Connection open, host active");
+                pingable = true;
+            }
+            catch (SocketException ex)
+            {
+                Console.WriteLine("Connection could not be established due to: \n" + ex.Message);
+            }
+            finally
+            {
+                client.Close();
+            }
+            return JsonConvert.SerializeObject(pingable.ToString());
         }
 
         // PUT api/<ValuesController>/5
