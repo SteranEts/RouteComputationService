@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Net.NetworkInformation;
 using System.Net;
 using System.Net.Sockets;
+using System.Diagnostics;
+using System.Threading;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -105,6 +107,7 @@ namespace RouteComputationService.Controllers
             List<RouteConfigurationData> item = LoadRouteConfigurationData();
             string json = JsonConvert.SerializeObject(item);
             Console.WriteLine("data");
+            Response.StatusCode = 200;
 
             return json;
         }
@@ -112,10 +115,11 @@ namespace RouteComputationService.Controllers
         // POST api/<ValuesController>
         [Route("ping")]
         [HttpGet]
-        public string ping()
+        public async Task<string> pingAsync()
         {
+
             //string nameOrAddress = "equipe08-routecomputation.herokuapp.com";
-            //bool pingable = false;
+            bool pingable = false;
             //Ping pinger = null;
             //Console.WriteLine(nameOrAddress + " ping");
             //try
@@ -137,23 +141,26 @@ namespace RouteComputationService.Controllers
             //}
 
             //return JsonConvert.SerializeObject(pingable.ToString());
-            System.Net.Sockets.TcpClient client = new TcpClient();
-            bool pingable = false;
-            try
-            {
-                client.Connect("google.com", 456);
-                Console.WriteLine("Connection open, host active");
-                pingable = true;
-            }
-            catch (SocketException ex)
-            {
-                Console.WriteLine("Connection could not be established due to: \n" + ex.Message);
-            }
-            finally
-            {
-                client.Close();
-            }
-            return JsonConvert.SerializeObject(pingable.ToString());
+            //System.Net.Sockets.TcpClient client = new TcpClient();
+            //bool pingable = false;
+            //try
+            //{
+            //    client.Connect("equipe08-routecomputationn.herokuapp.com", 80);
+            //    Console.WriteLine("Connection open, host active");
+            //    pingable = true;
+            //}
+            //catch (SocketException ex)
+            //{
+            //    Console.WriteLine("Connection could not be established due to: \n" + ex.Message);
+            //}
+            //finally
+            //{
+            //    client.Close();
+            //}
+            var httpClient = _httpClientFactory.CreateClient();
+            HttpResponseMessage response =
+   await httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, "https://equipe08-routecomputation.herokuapp.com/api/routecomputation/data"));
+            return JsonConvert.SerializeObject(response);
         }
 
         // PUT api/<ValuesController>/5
@@ -167,5 +174,6 @@ namespace RouteComputationService.Controllers
         public void Delete(int id)
         {
         }
+
     }
 }
