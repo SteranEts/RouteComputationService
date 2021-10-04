@@ -101,7 +101,7 @@ namespace RouteComputationService.Controllers
 
         // GET api/<ValuesController>/5
         [Route("data")]
-        [HttpGet]
+        [HttpGet, HttpHead]
         public string GetData()
         {
             List<RouteConfigurationData> item = LoadRouteConfigurationData();
