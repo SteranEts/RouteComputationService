@@ -29,6 +29,7 @@ namespace RouteComputationService
 
             services.AddControllers();
             services.AddHttpClient();
+            services.AddHealthChecks();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RouteComputationService", Version = "v1" });
@@ -55,6 +56,7 @@ namespace RouteComputationService
                 {
                     await context.Response.WriteAsync("Hello World!");
                 });
+                endpoints.MapHealthChecks("/health");
                 endpoints.MapControllers();
             });
         }
