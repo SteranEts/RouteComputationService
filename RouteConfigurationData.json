@@ -1,16 +1,158 @@
 [
     {
-        "detector": "det-00856-01",
-        "east_lane": [ 1, 2, 3, 4 ],
-        "west_lane": [ 5, 6, 7 ],
-        "coordX": 45.1928,
-        "coordY": -75.454
+        "detector": "det-00976-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5773433,
+        "coordY": -73.5171898
     },
     {
-        "detector": "det-00856-02",
-        "east_lane": [ 1, 2, 3, 4 ],
-        "west_lane": [ 5, 6, 7 ],
-        "coordX": 45.1928,
-        "coordY": -75.454
+        "detector": "det-00970-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.585318,
+        "coordY": -73.508207
+    },
+    {
+        "detector": "det-00967-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.584608,
+        "coordY": -73.50843
+    },
+    {
+        "detector": "det-001646-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5829998,
+        "coordY": -73.5122164
+    },
+    {
+        "detector": "det-001540-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.57875,
+        "coordY": -73.513817
+    },
+    {
+        "detector": "det-00974-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.576395,
+        "coordY": -73.515845
+    },
+    {
+        "detector": "det-00981-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5732377,
+        "coordY": -73.5185928
+    },
+    {
+        "detector": "det-001587-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5725555,
+        "coordY": -73.5191641
+    },
+    {
+        "detector": "det-00966-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.566676,
+        "coordY": -73.522957
+    },
+    {
+        "detector": "det-00971-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5650077,
+        "coordY": -73.5257342
+    },
+    {
+        "detector": "det-00774-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5586727,
+        "coordY": -73.5288259
+    },
+    {
+        "detector": "det-00777-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.556112,
+        "coordY": -73.528253
+    },
+    {
+        "detector": "det-00776-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5540025,
+        "coordY": -73.5317957
+    },
+    {
+        "detector": "det-00769-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5500148,
+        "coordY": 73.5341829
+    },
+    {
+        "detector": "det-00773-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.548263,
+        "coordY": -73.534885
+    },
+    {
+        "detector": "det-00757-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.54603,
+        "coordY": -73.534489
+    },
+    {
+        "detector": "det-00761-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.540596,
+        "coordY": -73.5380936
+    },
+    {
+        "detector": "det-001441-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5364552,
+        "coordY": -73.5438053
+    },
+    {
+        "detector": "det-00716-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.529878,
+        "coordY": -73.545044
+    },
+    {
+        "detector": "det-00223-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.526323,
+        "coordY": -73.545333
+    },
+    {
+        "detector": "det-00717-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.523557,
+        "coordY": -73.545465
+    },
+    {
+        "detector": "det-00722-01",
+        "east_zone": [ 0, 1, 2, 3 ],
+        "west_zone": [ 4, 5, 6, 7 ],
+        "coordX": 45.5163131,
+        "coordY": -73.5513674
     }
 ]
+
+

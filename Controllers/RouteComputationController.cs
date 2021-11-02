@@ -26,36 +26,38 @@ namespace RouteComputationService.Controllers
             _httpClientFactory = httpClientFactory;
         }
         // GET: api/<ValuesController>
-        [HttpGet]
-        public string Get()
+        [HttpPost]
+        public string Get([FromBody] List<dataIntersection> item)
         {
-            float mqtt = calculMQTT().Result;
-            float googleData = getGoogleMaps().Result;
             //List<dataIntersection> item = LoadIntersectionsComputation();
+            float mqtt = calculMQTT(item);
+            float googleData = getGoogleMaps().Result;
+            
             string json = JsonConvert.SerializeObject(new Data { mqtt_time = mqtt, mqtt_time_of_update = DateTime.Now, external_time = googleData, external_time_of_update = DateTime.Now });
+            var httpClient = _httpClientFactory.CreateClient();
+            httpClient.PostAsync("", json);
             return json;
         }
 
-
-        public async Task<float> calculMQTT()
+        public float calculMQTT(List<dataIntersection> item)
         {
-            float distanceMQTT = 0;
-            var httpClient = _httpClientFactory.CreateClient();
-            var URL = "https://jsonplaceholder.typicode.com/todos/";
-            var response = await httpClient.GetAsync(URL);
-            var test = await response.Content.ReadAsStringAsync();
-            List<Product> products = JsonConvert.DeserializeObject<List<Product>>(test);
+            float tempsMqtt = 0;
+            //var httpClient = _httpClientFactory.CreateClient();
+            //var URL = "https://jsonplaceholder.typicode.com/todos/";
+            //var response = await httpClient.GetAsync(URL);
+            //var test = await response.Content.ReadAsStringAsync();
+            //List<Product> products = JsonConvert.DeserializeObject<List<Product>>(test);
 
-            foreach (Product p in products)
+            foreach (dataIntersection p in item)
             {
-                distanceMQTT += p.Id;
+                tempsMqtt += p.time_west;
             }
-            return distanceMQTT;
+            return tempsMqtt;
         }
 
         public async Task<float> getGoogleMaps()
         {
-            float distanceMQTT = 0;
+            float distanceGoogle = 0;
             var httpClient = _httpClientFactory.CreateClient();
             var URL = "https://jsonplaceholder.typicode.com/todos/";
             var response = await httpClient.GetAsync(URL);
@@ -64,9 +66,9 @@ namespace RouteComputationService.Controllers
 
             foreach (Product p in products)
             {
-                distanceMQTT += p.Id;
+                distanceGoogle += p.Id;
             }
-            return distanceMQTT;
+            return distanceGoogle;
         }
         public Item LoadJson()
         {
@@ -117,62 +119,10 @@ namespace RouteComputationService.Controllers
         [HttpGet]
         public async Task<string> pingAsync()
         {
-
-            //string nameOrAddress = "equipe08-routecomputation.herokuapp.com";
-            bool pingable = false;
-            //Ping pinger = null;
-            //Console.WriteLine(nameOrAddress + " ping");
-            //try
-            //{
-            //    pinger = new Ping();
-            //    PingReply reply = pinger.Send(nameOrAddress, 1000);
-            //    pingable = reply.Status == IPStatus.Success;
-            //}
-            //catch (PingException)
-            //{
-            //    // Discard PingExceptions and return false;
-            //}
-            //finally
-            //{
-            //    if (pinger != null)
-            //    {
-            //        pinger.Dispose();
-            //    }
-            //}
-
-            //return JsonConvert.SerializeObject(pingable.ToString());
-            //System.Net.Sockets.TcpClient client = new TcpClient();
-            //bool pingable = false;
-            //try
-            //{
-            //    client.Connect("equipe08-routecomputationn.herokuapp.com", 80);
-            //    Console.WriteLine("Connection open, host active");
-            //    pingable = true;
-            //}
-            //catch (SocketException ex)
-            //{
-            //    Console.WriteLine("Connection could not be established due to: \n" + ex.Message);
-            //}
-            //finally
-            //{
-            //    client.Close();
-            //}
             var httpClient = _httpClientFactory.CreateClient();
             HttpResponseMessage response =
    await httpClient.SendAsync(new HttpRequestMessage(HttpMethod.Head, "https://equipe08-routecomputation.herokuapp.com/api/routecomputation/data"));
             return JsonConvert.SerializeObject(response);
-        }
-
-        // PUT api/<ValuesController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ValuesController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
 
     }
